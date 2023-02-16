@@ -1,0 +1,42 @@
+[
+  {
+    "classes": [
+      {
+        "id": "1",
+        "name": "etduiant",
+        "attributs": {
+          "nom": "string",
+          "preon": "string",
+          "age": "int"
+        }
+      },
+      {
+        "id": "2",
+        "name": "enseignat",
+        "attributs": {
+          "nom": "string",
+          "preon": "string",
+          "age": "int"
+        }
+      }
+    ]
+  },
+  {
+    "relations": [
+      {
+        "id": "1",
+        "relation_type": "assocoation",
+        "reltion_name": "enseigne",
+        "classes": [1, 2],
+        "cardinalities": ["0..1", "0..*"]
+      },
+      {
+        "id": "2",
+        "relation_type": "assocoation",
+        "reltion_name": "etudier",
+        "classes": [1, 2],
+        "cardinalities": ["0..1", "0..*"]
+      }
+    ]
+  }
+]

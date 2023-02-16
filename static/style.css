@@ -1,0 +1,30 @@
+body {
+  height: 100vh;
+  overflow: auto;
+}
+textarea {
+  width: 500px;
+  height: 200px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+#submitBtn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #00b0ff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#output {
+  margin-top: 20px;
+  font-size: 16px;
+  background-color: #e0e0e0;
+  padding: 20px;
+  width: 500px;
+  overflow: auto;
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Generated Data</title>
+  </head>
+  <body>
+    <h1>Classes</h1>
+    <ul>
+      {% for key, value in classes.items %}
+      <li>{{ key }}: {{ value.name }}</li>
+      {% endfor %}
+    </ul>
+    <h1>Relations</h1>
+    <ul>
+      {% for relation in relations %}
+      <li>
+        {{ relation.reltion_name }} ({{ relation.relation_type }}) between {{
+        classes[relation.classes[0]].name }} and {{
+        classes[relation.classes[1]].name }} with cardinalities {{
+        relation.cardinalities.0 }} and {{ relation.cardinalities.1 }}
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
