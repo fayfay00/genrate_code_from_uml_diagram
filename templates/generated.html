@@ -8,10 +8,14 @@
     <h1>Classes:</h1>
     <ul>
       {% for key, value in classes.items %}
-      <li>{{ key }}:</li>
+      <li>{{ key }}:{{ value.name }}</li>
       <ul>
-        {% for attr, type in value.attributs.items %}
-        <li>{{ attr }}: {{ type }}</li>
+        {% for attr in value.attributs %}
+        <li>
+          {%for k,v in attr.items %}
+          <p>{{k}}:{{v}}</p>
+          {%endfor%}
+        </li>
         {% endfor %}
       </ul>
       {% endfor %}

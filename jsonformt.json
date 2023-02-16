@@ -4,20 +4,44 @@
       {
         "id": "1",
         "name": "etduiant",
-        "attributs": {
-          "nom": "string",
-          "preon": "string",
-          "age": "int"
-        }
+        "attributs": [
+          {
+            "attribut_type": "STRING",
+            "attribut_name": "name",
+            "attribut_key_type": "primarykey"
+          },
+          {
+            "attribut_type": "STRING",
+            "attribut_name": "name",
+            "attribut_key_type": "foreinkey"
+          },
+          {
+            "attribut_type": "STRING",
+            "attribut_name": "name",
+            "attribut_key_type": "localkey"
+          }
+        ]
       },
       {
         "id": "2",
         "name": "enseignat",
-        "attributs": {
-          "nom": "string",
-          "preon": "string",
-          "age": "int"
-        }
+        "attributs": [
+          {
+            "attribut_type": "STRING",
+            "attribut_name": "name",
+            "attribut_key_type": "primarykey"
+          },
+          {
+            "attribut_type": "STRING",
+            "attribut_name": "name",
+            "attribut_key_type": "foreinkey"
+          },
+          {
+            "attribut_type": "STRING",
+            "attribut_name": "name",
+            "attribut_key_type": "localkey"
+          }
+        ]
       }
     ]
   },

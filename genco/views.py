@@ -24,7 +24,7 @@ def generated (request):
         return HttpResponse('This view only accepts POST requests')
     
 
-
+#une proposition kan a yassine
 def generate_Code(relations_dict,classes_dict):
     """_summary_this function allow us to generate code from the relation's dictionary
     """
