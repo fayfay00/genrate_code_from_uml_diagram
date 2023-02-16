@@ -25,6 +25,9 @@ def generated (request):
     
 #les fonctions approprie a les 5 regles de passage!
 
+def assosiation():
+    pass
+
 
 
 

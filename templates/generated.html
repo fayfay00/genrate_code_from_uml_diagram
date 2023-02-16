@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8" />
     <title>Generated Data</title>
   </head>
   <body>
-    <h1>Classes</h1>
+    <h1>Classes:</h1>
     <ul>
       {% for key, value in classes.items %}
-      <li>{{ key }}: {{ value.name }}</li>
+      <li>{{ key }}:</li>
+      <ul>
+        {% for attr, type in value.attributs.items %}
+        <li>{{ attr }}: {{ type }}</li>
+        {% endfor %}
+      </ul>
       {% endfor %}
     </ul>
-    <h1>Relations</h1>
+
+    <h1>Relations:</h1>
     <ul>
-      {% for relation in relations %}
-      <li>
-        {{ relation.reltion_name }} ({{ relation.relation_type }}) between {{
-        classes[relation.classes[0]].name }} and {{
-        classes[relation.classes[1]].name }} with cardinalities {{
-        relation.cardinalities.0 }} and {{ relation.cardinalities.1 }}
-      </li>
+      {% for rel_id, rel_data in relations.items %}
+      <li>{{ rel_data.reltion_name }} ({{ rel_data.relation_type }}):</li>
+      <ul>
+        cardinalities {% for card in rel_data.cardinalities %}
+        <li>{{card}}</li>
+        {% endfor %}
+      </ul>
       {% endfor %}
     </ul>
   </body>
