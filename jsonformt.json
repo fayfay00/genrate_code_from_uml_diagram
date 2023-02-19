@@ -7,18 +7,8 @@
         "attributs": [
           {
             "attribut_type": "STRING",
-            "attribut_name": "name",
+            "attribut_name": "pk_k",
             "attribut_key_type": "primarykey"
-          },
-          {
-            "attribut_type": "STRING",
-            "attribut_name": "name",
-            "attribut_key_type": "foreinkey"
-          },
-          {
-            "attribut_type": "STRING",
-            "attribut_name": "name",
-            "attribut_key_type": "localkey"
           }
         ]
       },
@@ -56,11 +46,78 @@
       },
       {
         "id": "2",
-        "relation_type": "assocoation",
+        "relation_type": "composition",
         "reltion_name": "etudier",
-        "classes": [1, 2],
-        "cardinalities": ["0..1", "0..*"]
+        "class_parent": "0",
+        "class_child": [1,2]
+      },
+      {
+        "id": "3",
+        "relation_type": "generalization",
+        "class_mother": [1],
+        "class_child": [2]
       }
     ]
   }
 ]
+
+
+
+[{
+  "classes": [{
+      "id": "0",
+      "name": "etduiant",
+      "attributs": [{
+        "attribut_type": "STRING",
+        "attribut_name": "pk_0",
+        "attribut_key_type": "primarykey"
+      }]
+    },
+    {
+      "id": "1",
+      "name": "enseignat",
+      "attributs": [{
+        "attribut_type": "STRING",
+        "attribut_name": "name",
+        "attribut_key_type": "pk_1"
+      }]
+    }, {
+      "id": "2",
+      "name": "etduiant",
+      "attributs": [{
+        "attribut_type": "STRING",
+        "attribut_name": "pk_2",
+        "attribut_key_type": "primarykey"
+      }]
+    }, {
+      "id": "3",
+      "name": "etduiant",
+      "attributs": [{
+        "attribut_type": "STRING",
+        "attribut_name": "pk_3",
+        "attribut_key_type": "primarykey"
+      }]
+    }
+  ]
+},
+{
+  "relations": [{
+    "id": "1",
+    "relation_type": "composition",
+    "class_parent": "0",
+    "class_child": [2]
+  },
+  {
+    "id": "2",
+    "relation_type": "generalization",
+    "class_mother": [0],
+    "class_child": [1]
+  },{
+    "id": "1",
+    "relation_type": "composition",
+    "class_parent": "0",
+    "class_child": [2]
+  }]
+}
+]
+

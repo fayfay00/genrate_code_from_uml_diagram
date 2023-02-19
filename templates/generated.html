@@ -1,36 +1,12 @@
+<!-- my_template.html -->
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-    <title>Generated Data</title>
+    <title>Attributes List</title>
   </head>
   <body>
-    <h1>Classes:</h1>
-    <ul>
-      {% for key, value in classes.items %}
-      <li>{{ key }}:{{ value.name }}</li>
-      <ul>
-        {% for attr in value.attributs %}
-        <li>
-          {%for k,v in attr.items %}
-          <p>{{k}}:{{v}}</p>
-          {%endfor%}
-        </li>
-        {% endfor %}
-      </ul>
-      {% endfor %}
-    </ul>
-
-    <h1>Relations:</h1>
-    <ul>
-      {% for rel_id, rel_data in relations.items %}
-      <li>{{ rel_data.reltion_name }} ({{ rel_data.relation_type }}):</li>
-      <ul>
-        cardinalities {% for card in rel_data.cardinalities %}
-        <li>{{card}}</li>
-        {% endfor %}
-      </ul>
-      {% endfor %}
-    </ul>
+    <h1>Attributes List:</h1>
+    <p>{{classes}}<br /></p>
   </body>
 </html>
