@@ -1,4 +1,4 @@
-#########################################################################################################
+    #########################################################################################################
 
 
 def Generatilization(classobj,mother,child): 
@@ -19,14 +19,14 @@ def Generatilization(classobj,mother,child):
                 foreign_key = get_primary_keys_list(classobj, one_mom)
                 #assemble all of previous keys in order to add them to the child class
                 for_keys= for_keys + foreign_key
-                #print(each_mother)
+                print(each_mother)
             classobj=add_fk_to_att_list(for_keys,classobj,child)
         elif(len(mother)==1 and len(child)>1):
             foreign_keys = get_primary_keys_list(classobj,mother[0])
             for each_child in child:
                 each_child=str(each_child)
                 classobj=add_fk_to_att_list(foreign_keys,classobj,each_child)
-                #print(each_child)
+                print(each_child)
             
         #print(for_keys)
         return classobj

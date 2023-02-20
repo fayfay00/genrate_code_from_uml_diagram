@@ -39,10 +39,10 @@
     "relations": [
       {
         "id": "1",
-        "relation_type": "assocoation",
+        "relation_type": "association",
         "reltion_name": "enseigne",
         "classes": [1, 2],
-        "cardinalities": ["0..1", "0..*"]
+        "cardinalities": ["1", "0..1"]
       },
       {
         "id": "2",

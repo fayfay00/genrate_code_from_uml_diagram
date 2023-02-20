@@ -4,6 +4,7 @@ import json
 
 from genco.regle_de_passage.generalization import Generatilization
 from genco.regle_de_passage.composition import Composition
+from genco.regle_de_passage.association import Association
 
 # Create your views here.
 
@@ -49,8 +50,9 @@ def Generate_Code(relations_dict,classes_dict):
     classes = classes_dict
      
     for relation_id,relation_data in relations.items():
-        if(relation_data['relation_type']=="assocoation"):
-            pass
+        if(relation_data['relation_type']=="association"):
+            classes=Association(classes, relation_data['classes'],relation_data['cardinalities'])
+            #print(relation_data['classes'])
         elif(relation_data['relation_type']=="generalization"):
             classes = Generatilization(classes, relation_data['class_mother'],relation_data['class_child'])
         elif(relation_data['relation_type']=="composition"):
