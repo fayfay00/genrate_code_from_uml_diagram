@@ -51,7 +51,7 @@ def Generate_Code(relations_dict,classes_dict):
      
     for relation_id,relation_data in relations.items():
         if(relation_data['relation_type']=="association"):
-            classes=Association(classes, relation_data['classes'],relation_data['cardinalities'])
+            classes=Association(classes, relation_data['classes'],relation_data['cardinalities'],relation_data['relation_name'] )
             #print(relation_data['classes'])
         elif(relation_data['relation_type']=="generalization"):
             classes = Generatilization(classes, relation_data['class_mother'],relation_data['class_child'])

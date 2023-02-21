@@ -2,9 +2,10 @@
 from genco.regle_de_passage.generalization import add_fk_to_att_list ,get_primary_keys_list
 
 
-def Association(classobj, classes, cardinalities):
-        child = classes[0]
-        parent =classes[1]
+def Association(classobj, classes, cardinalities,name):
+    child = classes[0]
+    parent =classes[1]
+    if not(len(name)== 1):
         # récupérer la classe mère et la classe fille de la relation 
         if cardinalities == ['1', '0..1']:
           
@@ -23,3 +24,25 @@ def Association(classobj, classes, cardinalities):
             classobj = add_fk_to_att_list(foreign_keys_child, classobj, parent)
             classobj = add_fk_to_att_list(foreign_keys_parent, classobj, child)
         return classobj
+    else:
+        if (cardinalities[0] == '1' and (cardinalities[1].find('*'))!=-1):
+            keys = classobj[name]['attributs']
+            keys_toadd = get_primary_keys_list(classobj, child)+keys
+            classobj = add_fk_to_att_list(keys_toadd, classobj, parent)
+            
+            ##print(keys_toadd)
+            return classobj
+        elif (cardinalities[1] == '1' and (cardinalities[0].find('*'))!=-1):
+            keys = classobj[name]['attributs']
+            keys_toadd = get_primary_keys_list(classobj, parent)+keys
+            classobj = add_fk_to_att_list(keys_toadd, classobj, child)
+            ##print(classobj)
+            return classobj
+        elif ((cardinalities[0].find('*'))!=-1 and (cardinalities[1].find('*'))!=-1):
+            parent_pk_key=get_primary_keys_list(classobj, parent)
+            child_pk_key=get_primary_keys_list(classobj, child)
+            keys=parent_pk_key+child_pk_key
+            classobj = add_fk_to_att_list(keys, classobj, name)
+            ##print(classobj)      
+            return classobj
+    
