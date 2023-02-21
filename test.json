@@ -127,43 +127,55 @@
 ]
 
 //////////////////////////Association///
-[
-  {
-    "classes": [
-      {
-        "id": "0",
-        "name": "personne",
-        "attributs": [
-          {
-            "attribut_type": "STRING",
-            "attribut_name": "pk_0",
-            "attribut_key_type": "primarykey"
-          }
-        ]
-      },
-      {
-        "id": "1",
-        "name": "etudiant",
-        "attributs": [
-          {
-            "attribut_type": "STRING",
-            "attribut_name": "pk_1",
-            "attribut_key_type": "primarykey"
-          }
-        ]
-      }
-      
-    ]
-  },
-  {
-    "relations": [
-      {
-        "id": "1",
-        "relation_type": "association",
-        "class_mother": [0],
-        "class_child": [1]
-      }
-     
-    ]
-  }
+[{
+  "classes": [{
+      "id": "1",
+      "name": "etduiant",
+      "attributs": [{
+        "attribut_type": "STRING",
+        "attribut_name": "pk_k",
+        "attribut_key_type": "primarykey"
+      }]
+    },
+    {
+      "id": "2",
+      "name": "enseignat",
+      "attributs": [{
+          "attribut_type": "STRING",
+          "attribut_name": "name",
+          "attribut_key_type": "primarykey"
+        },
+        {
+          "attribut_type": "STRING",
+          "attribut_name": "name",
+          "attribut_key_type": "foreinkey"
+        },
+        {
+          "attribut_type": "STRING",
+          "attribut_name": "name",
+          "attribut_key_type": "localkey"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "dispo",
+      "attributs": [{
+        "attribut_type": "INT",
+        "attribut_name": "dispo",
+        "attribut_key_type": "unique"
+      }]
+    }
+
+  ]
+},
+{
+  "relations": [{
+    "id": "1",
+    "relation_type": "association",
+    "relation_name": "3",
+    "classes": ["1", "2"],
+    "cardinalities": ["0..*", "*"]
+  }]
+}
 ]
