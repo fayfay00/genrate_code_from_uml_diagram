@@ -1,4 +1,4 @@
-/// test pour generalization :
+/// test pour generalization:
 [
   {
     "classes": [
@@ -66,7 +66,7 @@
   }
 ]
 //////////////////////////////////////////////
-///test pour composition et generalization 
+///test pour composition et generalization /////////////////////////////
 [{
     "classes": [{
             "id": "0",
@@ -126,7 +126,7 @@
 }
 ]
 
-//////////////////////////Association///
+//////////////////////////Association////////////////////////
 [{
   "classes": [{
       "id": "1",
