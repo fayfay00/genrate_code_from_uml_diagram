@@ -44,7 +44,7 @@ def change_pk_to_fk(pk_list):
     Returns:
         _type_: _description_ return the same list as pk_list but with foreign_key value
     """
-    fk_list = [{**attr_dict, 'attribut_key_type': 'foreinkey'} for attr_dict in pk_list if attr_dict['attribut_key_type'] == 'primarykey']
+    fk_list = [{**attr_dict, 'attribut_key_type': 'FOREIGN_KEY'} for attr_dict in pk_list if attr_dict['attribut_key_type'] == 'PRIMARY_KEY']
     # print(fk_list)
     return fk_list
 
@@ -74,8 +74,23 @@ def get_primary_keys_list(classobj,mother):
     mother=str(mother)
     mother_attributs_list= classobj[mother]['attributs']
     # permet de extraire les clé primaire d'une class
-    primary_keys = [attr_dict for attr_dict in mother_attributs_list if attr_dict['attribut_key_type'] == 'primarykey']
+    primary_keys = [attr_dict for attr_dict in mother_attributs_list if attr_dict['attribut_key_type'] == 'PRIMARY_KEY']
+    primary_keys=add_table_name(primary_keys,classobj[mother]['name'],classobj[mother]['id'])
+    #print(classobj[mother]['name'])
+    #print(primary_keys)
     # permet de changer les type de cle de pk a foreign key
     foreign_keys = change_pk_to_fk(primary_keys)
     #here we return the list of foreign keys
     return foreign_keys
+
+
+
+
+def add_table_name(pks,mother_name,mother_id):
+    
+    for pk in pks:
+        pk['table']=mother_name
+        pk ['table_id']=mother_id
+        
+    #print(pks)
+    return pks
