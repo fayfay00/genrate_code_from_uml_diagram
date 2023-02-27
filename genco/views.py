@@ -5,6 +5,7 @@ import json
 from genco.regle_de_passage.generalization import Generatilization
 from genco.regle_de_passage.composition import Composition
 from genco.regle_de_passage.association_2 import Association
+from sql_script.sql_script import SQL_code_generator
 
 # Create your views here.
 
@@ -58,7 +59,8 @@ def Generate_Code(relations_dict,classes_dict):
         elif(relation_data['relation_type']=="composition"):
             classes=Composition(classes, relation_data['class_parent'],relation_data['class_child'])
     # add code for generating code 
-    print(classes)
+    #print(classes)
+    SQL_code_generator(classes,"test_database")
     
     return classes
 
