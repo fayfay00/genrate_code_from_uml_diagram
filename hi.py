@@ -83,8 +83,8 @@ comment="/*---------------------------------------------------------------------
 sql_script=database_creation+comment
 for cls_id,cls_data in classobj.items():
     table_code=f"CREATE TABLE {cls_data['name']} ( "
-    pk_count=0
     pk_composed=[]
+    pk_count=0
     for att in cls_data['attributs']:
         if (att['attribut_key_type']=="LOCAL_KEY"):
             var=Variable_data_types(att['attribut_type'],att['attribut_name'])+","
