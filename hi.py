@@ -83,12 +83,20 @@ comment="/*---------------------------------------------------------------------
 sql_script=database_creation+comment
 for cls_id,cls_data in classobj.items():
     table_code=f"CREATE TABLE {cls_data['name']} ( "
+    pk_count=0
+    pk_composed=[]
     for att in cls_data['attributs']:
         if (att['attribut_key_type']=="LOCAL_KEY"):
             var=Variable_data_types(att['attribut_type'],att['attribut_name'])+","
             table_code+=var
-        elif not(att['attribut_key_type']=="FOREIGN_KEY"):
-            var=Variable_data_types(att['attribut_type'],att['attribut_name'])
+            
+        elif (att['attribut_key_type']=="PRIMARY_KEY"):
+            pk_count += 1
+            if pk_count == 1:
+               var=Variable_data_types(att['attribut_type'],att['attribut_name'])
+            else:
+                var=Variable_data_types(att['attribut_name'])
+            #pk_composed.append(att['attribut_name'])
             temp=Only_one_variable_key_types(data=att['attribut_key_type'],key_type=var)+' ,'
             table_code+=temp
             #print(table_code)
@@ -103,7 +111,13 @@ for cls_id,cls_data in classobj.items():
             #print(type(temp))
             table_code+=temp
             #print(temp)
-
+    if pk_count > 1:
+        pk_keys=[att['attribut_name'] for att in cls_data['attributs'] if (att['attribut_key_type']=="PRIMARY_KEY")]
+        pk_keys=','.join(pk_keys)
+        table_code+=pk_keys
+        #une autre methode possible on affichant comme ca PRIMARY KEY(id,id2)
+        #pk_cols_str = ", ".join(pk_cols)
+        #table_code += f"PRIMARY KEY ({pk_cols_str})"
     table_code=table_code[:-1] +"); \n"
     table_code+=comment
     sql_script+=table_code
