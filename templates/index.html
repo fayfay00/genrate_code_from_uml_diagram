@@ -18,21 +18,5 @@
     </form>
 
     <div id="output"></div>
-    <script>
-      document
-        .getElementById("submitBtn")
-        .addEventListener("click", function () {
-          try {
-            var jsonData = JSON.parse(
-              document.getElementById("jsonInput").value
-            );
-            var output = JSON.stringify(jsonData, null, 2);
-            document.getElementById("output").innerHTML =
-              "<pre>" + output + "</pre>";
-          } catch (e) {
-            alert("Entrée JSON non valide");
-          }
-        });
-    </script>
   </body>
 </html>

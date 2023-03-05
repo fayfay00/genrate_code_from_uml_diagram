@@ -8,7 +8,6 @@ def Association(classobj, classes, cardinalities,name):
     if not(len(name)== 1):
         # récupérer la classe mère et la classe fille de la relation 
         if cardinalities == ['1', '0..1']:
-          
             foreign_keys = get_primary_keys_list(classobj, child)
             # ajouter les clés étrangères à la liste des attributs de la classe fille
             classobj = add_fk_to_att_list(foreign_keys, classobj, parent)
@@ -29,7 +28,6 @@ def Association(classobj, classes, cardinalities,name):
             keys = classobj[name]['attributs']
             keys_toadd = get_primary_keys_list(classobj, child)+keys
             classobj = add_fk_to_att_list(keys_toadd, classobj, parent)
-            
             ##print(keys_toadd)
             return classobj
         elif (cardinalities[1] == '1' and (cardinalities[0].find('*'))!=-1):
