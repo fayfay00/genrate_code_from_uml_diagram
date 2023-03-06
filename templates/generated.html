@@ -8,23 +8,22 @@
     />
 
     <style>
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
 
-::-webkit-scrollbar {
-  width: 8px;
-}
+      ::-webkit-scrollbar-track {
+        background-color: #f1f1f1;
+      }
 
-::-webkit-scrollbar-track {
-  background-color: #f1f1f1;
-}
+      ::-webkit-scrollbar-thumb {
+        background-color: #888;
+        border-radius: 4px;
+      }
 
-::-webkit-scrollbar-thumb {
-  background-color: #888;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: #555;
-}
+      ::-webkit-scrollbar-thumb:hover {
+        background-color: #555;
+      }
 
       .token.number {
         color: red;
@@ -39,6 +38,11 @@
         width: 60%;
         height: 60vh;
         overflow-y: scroll;
+      }
+      pre,
+      code {
+        border: none;
+        outline: none;
       }
       pre.language-sql {
         background-color: #e5e5e5;
@@ -61,38 +65,48 @@
     <h1>Generated SQL script</h1>
     <div style="display: flex; justify-content: center">
       <pre>
-		<code class="language-sql" contenteditable>
+		<code class="language-sql" contenteditable="true"  >
+
 
 CREATE TABLE example (
-    id INT PRIMARY KEY,
-    name VARCHAR(50),
-    date_created DATE DEFAULT CURRENT_DATE,
-    active BOOLEAN DEFAULT TRUE
+  id INT PRIMARY KEY,
+  name VARCHAR(50),
+  date_created DATE DEFAULT CURRENT_DATE,
+  active BOOLEAN DEFAULT TRUE
 );
 CREATE TABLE example (
-    id INT PRIMARY KEY,
-    name VARCHAR(50),
-    date_created DATE DEFAULT CURRENT_DATE,
-    active BOOLEAN DEFAULT TRUE
+  id INT PRIMARY KEY,
+  name VARCHAR(50),
+  date_created DATE DEFAULT CURRENT_DATE,
+  active BOOLEAN DEFAULT TRUE
 );
 CREATE TABLE example (
-    id INT PRIMARY KEY,
-    name VARCHAR(50),
-    date_created DATE DEFAULT CURRENT_DATE,
-    active BOOLEAN DEFAULT TRUE
+  id INT PRIMARY KEY,
+  name VARCHAR(50),
+  date_created DATE DEFAULT CURRENT_DATE,
+  active BOOLEAN DEFAULT TRUE
 );
 CREATE TABLE example (
-    id INT PRIMARY KEY,
-    name VARCHAR(50),
-    date_created DATE DEFAULT CURRENT_DATE,
-    active BOOLEAN DEFAULT TRUE
+  id INT PRIMARY KEY,
+  name VARCHAR(50),
+  date_created DATE DEFAULT CURRENT_DATE,
+  active BOOLEAN DEFAULT TRUE
 );
+
 CREATE TABLE example (
-    id INT PRIMARY KEY,
-    name VARCHAR(50),
-    date_created DATE DEFAULT CURRENT_DATE,
-    active BOOLEAN DEFAULT TRUE
+  id INT PRIMARY KEY,
+  name VARCHAR(50),
+  date_created DATE DEFAULT CURRENT_DATE,
+  active BOOLEAN DEFAULT TRUE
 );
+
+CREATE TABLE example (
+  id INT PRIMARY KEY,
+  name VARCHAR(50),
+  date_created DATE DEFAULT CURRENT_DATE,
+  active BOOLEAN DEFAULT TRUE
+);
+
 	</code>
 </pre>
     </div>
