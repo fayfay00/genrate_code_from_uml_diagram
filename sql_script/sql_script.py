@@ -37,8 +37,8 @@ def SQL_code_generator(classobj,db_name):
         table_code=table_code[:-1] +"); \n"
         table_code+=comment
         sql_script+=table_code
-        #print(sql_script)
-    desk=os.path.join(os.path.expanduser("~"), 'Desktop')
+        print(classobj)
+    desk=os.path.join(os.path.expanduser("~"), 'C:\\Users\\yassine\\OneDrive\\Bureau')
     filepath=os.path.join(desk,"script_sql_from_django.txt")
     with open(filepath,"w") as f:
         f.write(str(sql_script))

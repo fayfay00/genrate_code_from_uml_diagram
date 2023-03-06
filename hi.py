@@ -115,7 +115,7 @@ for cls_id,cls_data in classobj.items():
         pk_keys=[att['attribut_name'] for att in cls_data['attributs'] if (att['attribut_key_type']=="PRIMARY_KEY")]
         pk_keys=','.join(pk_keys)
         table_code+=pk_keys
-        #une autre methode possible on affichant comme ca PRIMARY KEY(id,id2)
+        #une autre methode possible en l'affichant comme ca PRIMARY KEY(id,id2)
         #pk_cols_str = ", ".join(pk_cols)
         #table_code += f"PRIMARY KEY ({pk_cols_str})"
     table_code=table_code[:-1] +"); \n"
