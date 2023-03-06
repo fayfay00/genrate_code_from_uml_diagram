@@ -6,6 +6,15 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://kit.fontawesome.com/813e80b263.css"
+      crossorigin="anonymous"
+    />
 
     <style>
       ::-webkit-scrollbar {
@@ -26,15 +35,14 @@
       }
 
       .token.number {
-        color: red;
+        color: green;
       }
       body {
         background-color: #edede9;
       }
       pre {
         box-shadow: 1px 1px 2px rgba(0, 0, 0, 0, 3);
-        border: 1px solid #aaa;
-        border-radius: 5px;
+        border-radius: 0 0 10px 10px;
         width: 60%;
         height: 60vh;
         overflow-y: scroll;
@@ -46,6 +54,7 @@
       }
       pre.language-sql {
         background-color: #e5e5e5;
+        margin-top: 0;
       }
       h1 {
         font-size: 48px;
@@ -55,19 +64,68 @@
         margin-top: 50px;
         margin-bottom: 50px;
       }
+      .above_code {
+        padding: 15px;
+        background-color: #585b5d;
+        color: white;
+        display: flex;
+        margin: 0 auto;
+        justify-content: space-between;
+        border-radius: 5px 5px 0 0;
+        width: 60%;
+      }
+      #copy_btn,
+      #export_btn {
+        background-color: #585b5d;
+        border: none;
+        padding: 8px 12px;
+        color: #fff;
+        cursor: pointer;
+        text-shadow: 1px 1px 2px rgba(133, 128, 128, 1);
+        margin-right: 6px;
+      }
+      #copy_btn {
+        border-right: 1px solid rgba(255, 255, 255, 0.5);
+      }
+      span {
+        margin-left: 3px;
+        font-family: "Roboto", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 400px;
+      }
+      .right_text {
+        font-family: "Roboto", sans-serif;
+        font-size: 0.8rem;
+        padding: 8px 12px;
+      }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-sql.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-tsql.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/813e80b263.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <h1>Generated SQL script</h1>
+    <div class="above_code">
+      <div class="right_text">This code can be edited!</div>
+      <div>
+        <button id="copy_btn" type="button">
+          <i class="fa-regular fa-copy"></i> <span>Copy code </span>
+        </button>
+        <button id="export_btn" type="button">
+          <i class="fa-solid fa-share-from-square"></i> <span>Export </span>
+        </button>
+      </div>
+    </div>
     <div style="display: flex; justify-content: center">
       <pre>
 		<code class="language-sql" contenteditable="true"  >
 
-
+/*hello this is a coment*/
 CREATE TABLE example (
   id INT PRIMARY KEY,
   name VARCHAR(50),
@@ -86,13 +144,6 @@ CREATE TABLE example (
   date_created DATE DEFAULT CURRENT_DATE,
   active BOOLEAN DEFAULT TRUE
 );
-CREATE TABLE example (
-  id INT PRIMARY KEY,
-  name VARCHAR(50),
-  date_created DATE DEFAULT CURRENT_DATE,
-  active BOOLEAN DEFAULT TRUE
-);
-
 CREATE TABLE example (
   id INT PRIMARY KEY,
   name VARCHAR(50),
