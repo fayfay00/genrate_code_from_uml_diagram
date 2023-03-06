@@ -169,7 +169,6 @@ CREATE TABLE example (
 	  copyBtn.addEventListener("click", () => {
 		navigator.clipboard.writeText(codeBlock.textContent)
 		  .then(() => {
-			alert("Le code a été copié dans le presse-papiers !");
 			console.log("Code copied");
 			copyBtn.textContent = "Copied";
 			setTimeout(() => {
