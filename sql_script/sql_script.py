@@ -3,8 +3,8 @@ import os
 
 def SQL_code_generator(classobj,db_name):
     
-    database_creation=f"CREATE DATABASE {db_name};\nUSE {db_name}; \n"
-    comment="/*--------------------------------------------------------------------------*/ \n"
+    database_creation=f" \n\nCREATE DATABASE {db_name};\nUSE {db_name}; \n"
+    comment="\n\n/*--------------------------------------------------------------------------*/ \n\n\n"
     sql_script=database_creation+comment
     for cls_id,cls_data in classobj.items():
         table_code=f"CREATE TABLE {cls_data['name']} ( "
@@ -19,6 +19,8 @@ def SQL_code_generator(classobj,db_name):
                 temp=str(Only_one_variable_key_types(data=att['attribut_key_type'],key_type=var))+','
                 table_code+=temp
                 #print(table_code)
+                
+                
             else:
                 fk_class_id=att['table_id']
                 #print(fk_class_id)
@@ -39,7 +41,7 @@ def SQL_code_generator(classobj,db_name):
     desk=os.path.join(os.path.expanduser("~"), 'C:\\Users\\yassine\\OneDrive\\Bureau')
     filepath=os.path.join(desk,"script_sql_from_django.txt")
     with open(filepath,"w") as f:
-        f.write(sql_script)
+        f.write(str(sql_script))
 
     f.close()
 

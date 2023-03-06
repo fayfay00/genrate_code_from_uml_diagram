@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
 <head>
 	<title>Script SQL</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" />
@@ -29,4 +30,81 @@ CREATE TABLE example (
 		Prism.highlightAll();
 	</script>
 </body>
+=======
+  <head>
+    <title>JSON Display</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        border: 1px solid black;
+        padding: 20px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      th,
+      td {
+        border: 1px solid black;
+        padding: 10px;
+      }
+
+      th {
+        background-color: #ccc;
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      li {
+        margin: 5px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Attributs</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for key, value in classes.items %}
+          <tr>
+            <td>{{ value.id }}</td>
+            <td>{{ value.name }}</td>
+            <td>
+              <ul>
+                {% for attribut in value.attributs %}
+                <li>
+                  {{ attribut.attribut_type }} - {{ attribut.attribut_name }} -
+                  {{ attribut.attribut_key_type }}
+                </li>
+                {% endfor %}
+              </ul>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div>hello hi this is</div>
+    </div>
+  </body>
+>>>>>>> e2e3c862ac2ef877d33e0df5502f078038cc4cd9
 </html>
