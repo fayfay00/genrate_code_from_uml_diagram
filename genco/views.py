@@ -60,7 +60,7 @@ def Generate_Code(relations_dict,classes_dict):
             classes=Composition(classes, relation_data['class_parent'],relation_data['class_child'])
     # add code for generating code 
     #print(classes)
-    SQL_code_generator(classes,"test_database")
+    #SQL_code_generator(classes,"test_database")
     
     return classes
 

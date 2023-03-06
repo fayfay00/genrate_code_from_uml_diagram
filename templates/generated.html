@@ -1,78 +1,90 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>JSON Display</title>
+    <title>Script SQL</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css"
+    />
+
     <style>
+      .token.number {
+        color: red; /* bleu */
+      }
       body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
+        background-color: #edede9;
       }
-
-      .container {
-        border: 1px solid black;
-        padding: 20px;
+      pre {
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, 0, 3);
+        border: 1px solid #aaa;
+        border-radius: 5px;
+        width: 60%;
+        height: 60vh;
+        overflow-y: scroll;
       }
-
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 0 auto;
+      pre.language-sql {
+        background-color: #e5e5e5;
+      }
+      h1 {
+        font-size: 48px;
+        font-weight: bold;
+        color: #000;
         text-align: center;
-      }
-
-      th,
-      td {
-        border: 1px solid black;
-        padding: 10px;
-      }
-
-      th {
-        background-color: #ccc;
-      }
-
-      ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-
-      li {
-        margin: 5px 0;
+        margin-top: 50px;
+        margin-bottom: 50px;
       }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-sql.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-tsql.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
   </head>
   <body>
-    <div class="container">
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Attributs</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for key, value in classes.items %}
-          <tr>
-            <td>{{ value.id }}</td>
-            <td>{{ value.name }}</td>
-            <td>
-              <ul>
-                {% for attribut in value.attributs %}
-                <li>
-                  {{ attribut.attribut_type }} - {{ attribut.attribut_name }} -
-                  {{ attribut.attribut_key_type }}
-                </li>
-                {% endfor %}
-              </ul>
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-      <div>hello hi this is</div>
+    <h1>Generated SQL script</h1>
+    <div style="display: flex; justify-content: center">
+      <pre>
+		<code class="language-sql" contenteditable>
+CREATE TABLE example (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    date_created DATE DEFAULT CURRENT_DATE,
+    active BOOLEAN DEFAULT TRUE
+);
+CREATE TABLE example (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    date_created DATE DEFAULT CURRENT_DATE,
+    active BOOLEAN DEFAULT TRUE
+);
+CREATE TABLE example (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    date_created DATE DEFAULT CURRENT_DATE,
+    active BOOLEAN DEFAULT TRUE
+);
+CREATE TABLE example (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    date_created DATE DEFAULT CURRENT_DATE,
+    active BOOLEAN DEFAULT TRUE
+);
+CREATE TABLE example (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    date_created DATE DEFAULT CURRENT_DATE,
+    active BOOLEAN DEFAULT TRUE
+);
+CREATE TABLE example (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    date_created DATE DEFAULT CURRENT_DATE,
+    active BOOLEAN DEFAULT TRUE
+);
+	</code>
+</pre>
     </div>
+    <script>
+      Prism.highlightAll();
+    </script>
   </body>
 </html>
