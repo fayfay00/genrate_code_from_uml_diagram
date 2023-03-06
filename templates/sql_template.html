@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Script SQL</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" />
+	
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-sql.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-tsql.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+</head>
+<body>
+	<h1>Script SQL</h1>
+	<pre><code class="language-sql">
+CREATE TABLE example (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    date_created DATE DEFAULT CURRENT_DATE,
+    active BOOLEAN DEFAULT TRUE
+);
+	</code></pre>
+	<script>
+		Prism.plugins.NormalizeWhitespace.setDefaults({
+			'remove-trailing': true,
+			'remove-indent': true,
+			'left-trim': true,
+			'right-trim': true
+		});
+		Prism.highlightAll();
+	</script>
+</body>
+</html>

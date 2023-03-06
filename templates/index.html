@@ -10,13 +10,14 @@
     <link rel="stylesheet" href="static/style.css" />
   </head>
   <body>
+    
     <form method="post" action="{% url 'generated' %}">
       {% csrf_token %}
       <label for="input_text">Input Text:</label>
       <textarea name="input_text" id="input_text"></textarea>
       <button type="submit">Generate</button>
     </form>
-
+    
     <div id="output"></div>
     <script>
       document

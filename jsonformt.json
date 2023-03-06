@@ -40,7 +40,7 @@
       {
         "id": "1",
         "relation_type": "association",
-        "reltion_name": "enseigne",
+        "relation_name": "enseigne",
         "classes": [1, 2],
         "cardinalities": ["1", "0..1"]
       },
@@ -121,3 +121,60 @@
 }
 ]
 
+
+
+
+
+
+
+///////////////////////////////////////////
+[{
+  "classes": [{
+      "id": "1",
+      "name": "commande",
+      "attributs": [{
+        "attribut_type": "STRING",
+        "attribut_name": "pk_commande",
+        "attribut_key_type": "PRIMARY_KEY"
+      }, {
+        "attribut_type": "STRING",
+        "attribut_name": "pk_commande2",
+        "attribut_key_type": "LOCAL_KEY"
+      }, {
+        "attribut_type": "STRING",
+        "attribut_name": "pk_commande3",
+        "attribut_key_type": "LOCAL_KEY"
+      }]
+    }, {
+      "id": "2",
+      "name": "facture",
+      "attributs": [{
+        "attribut_type": "STRING",
+        "attribut_name": "pk_facture",
+        "attribut_key_type": "PRIMARY_KEY"
+      }]
+    },
+    {
+      "id": "3",
+      "name": "fayfay",
+      "attributs": [{
+        "attribut_type": "STRING",
+        "attribut_name": "fayfay",
+        "attribut_key_type": "LOCAL_KEY"
+      }]
+    }
+  ]
+},
+{
+  "relations": [{
+    "id": "1",
+    "relation_name": "3",
+    "relation_type": "association",
+    "classes": ["1", "2"],
+    "cardinalities": "ONESTAR"
+  }]
+},
+{
+  "packagename": "hello"
+}
+]

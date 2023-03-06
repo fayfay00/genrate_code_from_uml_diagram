@@ -32,4 +32,4 @@ def Association(classobj, classes, cardinality, name):
                 return classobj
                 
         else:
-            print("there is an errore in cardinalities\n -404-function doesn't exist ")
+            print("there is an error in cardinalities\n -404-function doesn't exist ")
