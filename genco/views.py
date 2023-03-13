@@ -1,12 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseBadRequest
 import json
-
 from genco.regle_de_passage.generalization import Generatilization
 from genco.regle_de_passage.composition import Composition
 from genco.regle_de_passage.association_2 import Association
 from sql_script.sql_script import SQL_code_generator
-
+from sql_script.sql_script import number_of_keys
 # Create your views here.
 
 def index(request):
@@ -23,9 +22,9 @@ def generated (request):
              relations = {rel['id']: rel for rel in data[1]['relations']}
              #generated_code=Generate_Code(relations,classes)
              classes=Generate_Code(relations,classes)
-            
-            
-             return render(request,'generated.html',{'classes':classes,'relations':relations})
+             pk_fk=number_of_keys(classes)
+
+             return render(request,'generated.html',{'classes':classes,'relations':relations, 'pk_fk':pk_fk})
          
          
         except json.JSONDecodeError:

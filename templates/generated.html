@@ -1,7 +1,15 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
   <head>
     <title>Script SQL</title>
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'generated.css' %}"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css"
@@ -16,89 +24,6 @@
       crossorigin="anonymous"
     />
 
-    <style>
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-
-      ::-webkit-scrollbar-track {
-        background-color: #f1f1f1;
-      }
-
-      ::-webkit-scrollbar-thumb {
-        background-color: #888;
-        border-radius: 4px;
-      }
-
-      ::-webkit-scrollbar-thumb:hover {
-        background-color: #555;
-      }
-
-      .token.number {
-        color: green;
-      }
-      body {
-        background-color: #edede9;
-      }
-      pre {
-        box-shadow: 1px 1px 2px rgba(0, 0, 0, 0, 3);
-        border-radius: 0 0 10px 10px;
-        width: 60%;
-        height: 60vh;
-        overflow-y: scroll;
-      }
-      pre,
-      code {
-        border: none;
-        outline: none;
-      }
-      pre.language-sql {
-        background-color: #e5e5e5;
-        margin-top: 0;
-      }
-      h1 {
-        font-size: 48px;
-        font-weight: bold;
-        color: #000;
-        text-align: center;
-        margin-top: 50px;
-        margin-bottom: 50px;
-      }
-      .above_code {
-        padding: 15px;
-        background-color: #585b5d;
-        color: white;
-        display: flex;
-        margin: 0 auto;
-        justify-content: space-between;
-        border-radius: 5px 5px 0 0;
-        width: 60%;
-      }
-      #copy_btn,
-      #export_btn {
-        background-color: #585b5d;
-        border: none;
-        padding: 8px 12px;
-        color: #fff;
-        text-shadow: 1px 1px 2px rgba(133, 128, 128, 1);
-        margin-right: 6px;
-		cursor:pointer;
-      }
-      #copy_btn {
-        border-right: 1px solid rgba(255, 255, 255, 0.5);
-      }
-      span {
-        margin-left: 3px;
-        font-family: "Roboto", sans-serif;
-        font-size: 0.8rem;
-        font-weight: 400px;
-      }
-      .right_text {
-        font-family: "Roboto", sans-serif;
-        font-size: 0.8rem;
-        padding: 8px 12px;
-      }
-    </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-sql.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-tsql.min.js"></script>
@@ -114,7 +39,7 @@
       <div class="right_text">This code can be edited!</div>
       <div>
         <button id="copy_btn" type="button">
-			<span><i class="fa-regular fa-copy"></i> Copy code </span>
+          <span><i class="fa-regular fa-copy"></i> Copy code </span>
         </button>
         <button id="export_btn" type="button">
           <i class="fa-solid fa-share-from-square"></i> <span>Export </span>
@@ -124,64 +49,56 @@
     <div style="display: flex; justify-content: center">
       <pre>
 		<code class="language-sql" contenteditable="true"  >
-
-/*hello this is a coment*/
-CREATE TABLE example (
-  id INT PRIMARY KEY,
-  name VARCHAR(50),
-  date_created DATE DEFAULT CURRENT_DATE,
-  active BOOLEAN DEFAULT TRUE
-);
-CREATE TABLE example (
-  id INT PRIMARY KEY,
-  name VARCHAR(50),
-  date_created DATE DEFAULT CURRENT_DATE,
-  active BOOLEAN DEFAULT TRUE
-);
-CREATE TABLE example (
-  id INT PRIMARY KEY,
-  name VARCHAR(50),
-  date_created DATE DEFAULT CURRENT_DATE,
-  active BOOLEAN DEFAULT TRUE
-);
-CREATE TABLE example (
-  id INT PRIMARY KEY,
-  name VARCHAR(50),
-  date_created DATE DEFAULT CURRENT_DATE,
-  active BOOLEAN DEFAULT TRUE
-);
-
-CREATE TABLE example (
-  id INT PRIMARY KEY,
-  name VARCHAR(50),
-  date_created DATE DEFAULT CURRENT_DATE,
-  active BOOLEAN DEFAULT TRUE
-);
-
-	</code>
+      {% include 'script.sql' %}
+	  </code>
 </pre>
     </div>
     <script>
       Prism.highlightAll();
-	  const copyBtn = document.querySelector("#copy_btn");
-	  const codeBlock = document.querySelector("code");
-	  
-	  copyBtn.addEventListener("click", () => {
-		navigator.clipboard.writeText(codeBlock.textContent)
-		  .then(() => {
-			console.log("Code copied");
-			copyBtn.textContent = "Copied";
-			setTimeout(() => {
-			  copyBtn.textContent = "";
-			  copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i> <span>Copy code </span>';
-			}, 5000);
-		  })
-		  .catch((error) => {
-			console.error("Error copying code", error);
-		  });
-	  });
-	  
+      const copyBtn = document.querySelector("#copy_btn");
+      const codeBlock = document.querySelector("code");
 
+      copyBtn.addEventListener("click", () => {
+        navigator.clipboard
+          .writeText(codeBlock.textContent)
+          .then(() => {
+            console.log("Code copied");
+            copyBtn.innerHTML =
+              '<i class="fa-solid fa-check"></i> <span> Copied </span>';
+            setTimeout(() => {
+              copyBtn.textContent = "";
+              copyBtn.innerHTML =
+                '<i class="fa-regular fa-copy"></i> <span>Copy code </span>';
+            }, 2000);
+          })
+          .catch((error) => {
+            console.error("Error copying code", error);
+          });
+      });
+
+      const sqlEditor = document.querySelector("code");
+      const exportBtn = document.getElementById("export_btn");
+
+      exportBtn.addEventListener("click", () => {
+        console.log("click");
+        const sqlCode = sqlEditor.innerText;
+        const filename = "export.sql";
+        const blob = new Blob([sqlCode], { type: "text/sql" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        exportBtn.innerHTML =
+          '<i class="fa-regular fa-circle-check"></i> <span> Exported </span>';
+        setTimeout(() => {
+          exportBtn.textContent = "";
+          exportBtn.innerHTML =
+            '<i class="fa-solid fa-share-from-square"></i> <span>Export </span>';
+        }, 2000);
+      });
     </script>
   </body>
 </html>

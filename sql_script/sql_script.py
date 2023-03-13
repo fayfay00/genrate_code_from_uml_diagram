@@ -38,10 +38,10 @@ def SQL_code_generator(classobj,db_name):
         table_code+=comment
         sql_script+=table_code
         print(classobj)
-    desk=os.path.join(os.path.expanduser("~"), 'C:\\Users\\yassine\\OneDrive\\Bureau')
+    desk=os.path.join(os.path.expanduser("~"), 'C:\\Users\\HP\\Desktop')
     filepath=os.path.join(desk,"script_sql_from_django.txt")
     with open(filepath,"w") as f:
-        f.write(str(sql_script))
+        f.write(str(classobj))
 
     f.close()
 
@@ -93,3 +93,30 @@ def test_pks(att_list):
         if att['attribut_key_type']=="PRIMARY_KEY":
             pk=pk+1
     return pk
+###############################################################################################################
+
+
+
+def number_of_keys(classobj):
+
+
+    class_keys = {}
+
+    for class_id, class_data in classobj.items():
+        class_name = class_data['id']
+        primary_keys = []
+        foreign_keys = []
+    
+        for attr in class_data['attributs']:
+            if attr['attribut_key_type'] == 'PRIMARY_KEY':
+                 primary_keys.append(attr['attribut_name'])
+            elif attr['attribut_key_type'] == 'FOREIGN_KEY':
+                foreign_keys.append(attr['attribut_name'])
+    
+        class_keys[class_name] = {
+            'primary_keys': primary_keys,
+            'foreign_keys': foreign_keys
+        }
+
+    print(class_keys)
+    return class_keys
