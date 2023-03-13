@@ -118,5 +118,5 @@ def number_of_keys(classobj):
             'foreign_keys': foreign_keys
         }
 
-    print(class_keys)
+    #print(class_keys)
     return class_keys

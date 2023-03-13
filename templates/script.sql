@@ -1,6 +1,6 @@
 {% load generation_tags %}
-CREATE DATABASE MY_database;
-USE MY_database;
+CREATE DATABASE {{db_name}};
+USE {{db_name}};
 {%for cls_id,cls_data in classes.items%}/*code de creation de la table {{cls_data.name}}*/
 CREATE TABLE  {{cls_data.name}}(
 

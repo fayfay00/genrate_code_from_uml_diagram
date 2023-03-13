@@ -179,3 +179,102 @@
   }]
 }
 ]
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//last test to check the validity of sql generation code
+
+
+[{
+  "classes": [{
+      "id": "1",
+      "name": "Personne",
+      "attributs": [{
+        "attribut_type": "INT",
+        "attribut_name": "ID",
+        "attribut_key_type": "PRIMARY_KEY"
+      }, {
+        "attribut_type": "STRING",
+        "attribut_name": "Nom",
+        "attribut_key_type": "LOCAL_KEY"
+      }, {
+        "attribut_type": "STRING",
+        "attribut_name": "Prenom",
+        "attribut_key_type": "LOCAL_KEY"
+      }, {
+        "attribut_type": "DATE",
+        "attribut_name": "DATE_DE_NAISSANCE",
+        "attribut_key_type": "LOCAL_KEY"
+      }]
+    }, {
+      "id": "2",
+      "name": "Etudiant",
+      "attributs": [{
+        "attribut_type": "STRING",
+        "attribut_name": "Mention",
+        "attribut_key_type": "LOCAL_KEY"
+      }, {
+        "attribut_type": "DATE",
+        "attribut_name": "Annéé_de_bac",
+        "attribut_key_type": "LOCAL_KEY"
+      }]
+    },
+    {
+      "id": "3",
+      "name": "Enseignant",
+      "attributs": [{
+        "attribut_type": "STRING",
+        "attribut_name": "Grade",
+        "attribut_key_type": "LOCAL_KEY"
+      }]
+    }, {
+      "id": "4",
+      "name": "Ecole",
+      "attributs": [{
+        "attribut_type": "INT",
+        "attribut_name": "ID_ecole",
+        "attribut_key_type": "PRIMARY_KEY"
+      }, {
+        "attribut_type": "STRING",
+        "attribut_name": "Nom_ecole",
+        "attribut_key_type": "LOCAL_KEY"
+      }, {
+        "attribut_type": "STRING",
+        "attribut_name": "TYPE_ecole",
+        "attribut_key_type": "LOCAL_KEY"
+      }]
+    }, {
+      "id": "5",
+      "name": "Classes",
+      "attributs": [{
+        "attribut_type": "INT",
+        "attribut_name": "NUM_class",
+        "attribut_key_type": "PRIMARY_KEY"
+      }]
+    }
+  ]
+},
+{
+  "relations": [{
+    "id": "1",
+    "relation_name": ["etudier"],
+    "relation_type": "association",
+    "classes": ["1", "4"],
+    "cardinalities": "ONESTAR"
+  }, {
+    "id": "2",
+    "relation_type": "composition",
+    "class_parent": "4",
+    "class_child": [5]
+  }, {
+    "id": "3",
+    "relation_type": "generalization",
+    "class_mother": [1],
+    "class_child": [2, 3]
+  }]
+},
+{
+  "packagename": "data_base"
+}
+]

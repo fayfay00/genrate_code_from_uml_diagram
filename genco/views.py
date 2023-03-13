@@ -20,11 +20,13 @@ def generated (request):
              classes = {cls['id']: cls for cls in data[0]['classes']}
              #relations object has all relations we have in our UML diagram
              relations = {rel['id']: rel for rel in data[1]['relations']}
+             db_name = data[2]['packagename']
+             #print(db_name)
              #generated_code=Generate_Code(relations,classes)
              classes=Generate_Code(relations,classes)
              pk_fk=number_of_keys(classes)
 
-             return render(request,'generated.html',{'classes':classes,'relations':relations, 'pk_fk':pk_fk})
+             return render(request,'generated.html',{'classes':classes,'relations':relations, 'pk_fk':pk_fk , "db_name":db_name})
          
          
         except json.JSONDecodeError:
